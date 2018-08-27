@@ -5,18 +5,18 @@ import mysql.connector
 import sys
 
 # 接收终端传入的参数
-id = sys.argv[1]
+mid = sys.argv[1]
 client = sys.argv[2]
 acc = sys.argv[3]
 pw = sys.argv[4]
 
 
-def insertData(cursor,id,client,acc,pw):
+def insertData(cursor,mid,client,acc,pw):
 	sql_insert_data = "insert into mypw (id,client,acc,pw) values (%s,%s,%s,%s)"
 	try:
-		cursor.execute(sql_insert_data)
-	except mysql.connector.error as e:
-		print('Insert Data error')
+		cursor.execute(sql_insert_data,(mid,client,acc,pw))
+	except mysql.connector.Error as e:
+		print('Insert Data error:{}'.format(e))
 	
 
 
@@ -27,7 +27,7 @@ con = mysql.connector.connect(host='66.98.113.68',user='root',password='suiyi',d
 cursor = con.cursor()
 
 # 插入终端传入数据
-insertData(cursor,id,client,acc,pw)
+insertData(cursor,mid,client,acc,pw)
 
 # 关闭连接 关闭游标
 con.close()
