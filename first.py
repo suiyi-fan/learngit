@@ -6,14 +6,14 @@ import mysql.connector
 # 连接
 con = mysql.connector.connect(host='66.98.113.68',user='root',password='suiyi',database='database_test')
 
-print(con.connection_id)
+#print(con.connection_id)
 
 cursor = con.cursor()
 
-insert1 = ("insert into stu""(id,name,age)"" values (2,'Tom',20)")
-cursor.execute(insert1)
+insert1 = ("insert into stu""(id,name,age)"" values (%s,%s,%s)")
+cursor.execute(insert1,(3,'Adw',18))
 rowid = cursor.lastrowid
-print("rowid=",rowid)
+#print("rowid=",rowid)
 
 # update1 = "update stu set age=18 where id=2"
 # cursor.execute(update1)
