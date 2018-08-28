@@ -11,7 +11,7 @@ con = mysql.connector.connect(host='66.98.113.68',user='root',password='suiyi',d
 cursor = con.cursor()
 
 insert1 = ("insert into stu""(id,name,age)"" values (%s,%s,%s)")
-cursor.execute(insert1,(3,'Adw',18))
+cursor.execute(insert1,(4,'Tem',18))
 rowid = cursor.lastrowid
 #print("rowid=",rowid)
 
